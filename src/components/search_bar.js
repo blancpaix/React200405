@@ -7,9 +7,16 @@ class SearchBar extends Component {
         this.state = {term : 'Input your Value'};   // SearchBar의 자체적인 state
     }
 
+    // onInputChange(foo) { this.setState({term : foo}) } // Es6 적용
+    onInputChange(term) {
+        this.setState({term});
+        // 컴포넌트 속성으로 사용될 함수
+        this.props.onSearchChange(term);
+    }
+
     render() {
         return (
-            <div>
+            <div className="search-bar">
                 <input onChange={(event) => this.onInputChange(event.target.value)} />
                 <br></br>
                 Target value: {this.state.term}
@@ -17,12 +24,6 @@ class SearchBar extends Component {
         )
     }
 
-    // onInputChange(foo) { this.setState({term : foo}) } // Es6 적용
-    onInputChange(term) {
-        this.setState({term});
-        // 컴포넌트 속성으로 사용될 함수
-        this.props.onSearchChange(term);
-    }
 }
 
 export default SearchBar;

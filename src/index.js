@@ -32,13 +32,13 @@ class App extends Component {
 
 	
 	videoSearch(input) {
-		YTSearch ({ key: API_KEY, input }, (videos) => 
+		YTSearch ({ key: API_KEY, input}, (videos) => 
 			{this.setState({
 				videos,
 				selectedVideo : videos[0]
 			})
+			console.log(this.state.videos);
 		})
-		console.log(this.state.videos)
 	}
 
 	render() {
@@ -46,9 +46,8 @@ class App extends Component {
 		
 		return (
 			<div>
-				<h1>Main Text</h1>
-				<SearchBar 
-					// 여기 들어가는 값들을 싸그리 묶어 props 라고 생각하면 편함
+				<h1>Gyuntube</h1>
+				<SearchBar
 					onSearchChange={ _inputSearch } />
 				<VideoDetail video={this.state.selectedVideo} />
 				<VideoList 
@@ -58,8 +57,6 @@ class App extends Component {
 			</div>
 		)
 	}
-
-
 }
 
 ReactDOM.render(<App/>, document.querySelector('.container'));
