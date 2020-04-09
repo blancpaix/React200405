@@ -9,7 +9,8 @@ import ReduxPromis from 'redux-promise';
 import App from './components/app';
 import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(ReduxPromis)(createStore);
+// 미들웨어 추가 ReduxPromise 해야 redux 완벽하게 돌아가는구먼??
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
