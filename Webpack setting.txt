@@ -1,0 +1,21 @@
+Webpack : 모듈 번들러
+
+기본 설치
+npm i -d webpack webpack-cli
+npm i -d babel-loader (Es6 => Es5 Transcoding)
+RootDir/webpack.config.js 파일 생성
+    코드는 다 타이핑 해줘야 하는듯??... 그냥 템플릿으로 만들어둡시다
+    module.loader.query.presets 에서 설정한 것들로 추가적인 설치함
+    npm i -d babel-core babel-preset-stage-1 babel-preset-react webpack-dev-server
+
+
+package.json 스크립트 추가
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
+    "test:watch": "npm run test -- --watch",
+    "build": "webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors"
+
+src / style 폴더 생성
+
+기본적으로 컴포넌트나 컨테이너 리듀서 사용하니까 Dir 구조생성
+src/containers      src/components      src/reducers
